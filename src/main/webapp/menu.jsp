@@ -9,6 +9,11 @@
 <ul>
     <li><a href="${pageContext.request.contextPath}/person/list">List students</a></li>
     <li><a href="${pageContext.request.contextPath}/person">New student</a></li>
+    <br/>
 </ul>
+<form action="${pageContext.request.contextPath}/logout" method="GET">
+    <input class="button" type="submit" value="Выход">
+</form>
+
 </body>
 </html>
