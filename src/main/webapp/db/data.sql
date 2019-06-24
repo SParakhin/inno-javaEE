@@ -4,7 +4,9 @@ CREATE TABLE PERSON
   name       VARCHAR(250),
   birth_date LONG (250),
   login      VARCHAR(250),
-  password   varchar(250)
+  password   varchar(250),
+  email   varchar(250),
+  telephone   varchar(250)
 );
 
 insert into PERSON (name, birth_date, login, password) VALUES ('admin','01012000','admin','123');

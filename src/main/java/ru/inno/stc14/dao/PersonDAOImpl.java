@@ -18,9 +18,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     private static final String INSERT_PERSON_SQL_TEMPLATE =
-            "insert into person (name, birth_date,login,password) values (?, ?,?,?)";
+            "insert into person (name, birth_date,login,password,email,telephone) values (?, ?,?,?,?,?)";
     private static final String SELECT_PERSON_SQL_TEMPLATE =
-            "select id, name, birth_date from person";
+            "select id, name, birth_date,email,telephone from person";
     private static final String SELECT_PERSON_SQL_LOGIN_PASSWORD =
             "select login,password from person where login=? and password=? ";
 
@@ -35,6 +35,8 @@ public class PersonDAOImpl implements PersonDAO {
                     person.setName(resultSet.getString(2));
                     Date date = new Date(resultSet.getLong(3));
                     person.setBirthDate(date);
+                    person.setEmail(resultSet.getString(4));
+                    person.setTelephone(resultSet.getString(5));
                     result.add(person);
                 }
             }
@@ -55,6 +57,8 @@ public class PersonDAOImpl implements PersonDAO {
             }
             statement.setString(3, person.getLogin());
             statement.setString(4, person.getPassword());
+            statement.setString(5,person.getEmail());
+            statement.setString(6,person.getTelephone());
             statement.execute();
             return true;
         } catch (SQLException e) {

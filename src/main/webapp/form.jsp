@@ -1,19 +1,37 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>New Student</title>
-</head>
-<body>
-<h1>Adding a new student</h1>
-<form method="post" action="${pageContext.request.contextPath}/person">
-    <input type="text" name="name" placeholder="name"><br/>
-    <input type="text" name="birth" placeholder="birth"><br/>
-    <input type="text" name="login" placeholder="login"><br/>
-    <input type="password" name="password" placeholder="password"><br/>
-    <input type="submit"/>
-</form>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="myTags" tagdir="/WEB-INF/tags" %>
 
-</body>
-</html>
+<myTags:template>
+    <jsp:attribute name="header">
+        <h1>Adding a new student</h1>
+    </jsp:attribute>
+    <jsp:body>
+        <form method="post" action="${pageContext.request.contextPath}/person" autocomplete="on">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input name="name" type="text" class="form-control" id="name"/>
+            </div>
+            <div class="form-group">
+                <label for="birth">Birth</label>
+                <input name="birth" type="text" class="form-control" id="birth"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="text" class="form-control" id="email"/>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input name="telephone" type="text" class="form-control" id="telephone"/>
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input name="login" type="text" class="form-control" id="login"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </jsp:body>
+</myTags:template>

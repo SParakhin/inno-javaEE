@@ -8,7 +8,7 @@ public interface PersonService {
 
     List<Person> getList();
 
-    boolean addPerson(String name, String birth, String login, String password);
+    boolean addPerson(String name, String birth, String email, String telephone, String login, String password);
 
     Person getPersonByLoginAndPassword(String login, String password);
 }

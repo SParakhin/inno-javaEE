@@ -24,6 +24,12 @@ public class PersonServlet extends HttpServlet {
         super.init();
     }
 
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        req.getRequestDispatcher("/form.jsp")
+//                .forward(req, resp);
+//    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/form.jsp")
@@ -35,11 +41,11 @@ public class PersonServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String name = req.getParameter("name");
         String birth = req.getParameter("birth");
+        String email = req.getParameter("email");
+        String telephone = req.getParameter("telephone");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-
-        person.addPerson(name, birth, login, password);
-
+        person.addPerson(name, birth, email, telephone, login, password);
         resp.sendRedirect(req.getContextPath() + "/person/list");
     }
 }

@@ -27,11 +27,13 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public boolean addPerson(String name, String birth, String login, String password) {
+    public boolean addPerson(String name, String birth, String email, String telephone, String login, String password) {
         Person person = new Person();
         person.setName(name);
         Date date = safeParseDate(birth);
         person.setBirthDate(date);
+        person.setEmail(email);
+        person.setTelephone(telephone);
         person.setLogin(login);
         person.setPassword(password);
         return personDAO.addPerson(person);

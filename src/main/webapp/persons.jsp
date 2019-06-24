@@ -1,29 +1,35 @@
-<%@ page import="ru.inno.stc14.entity.Person" %>
-<%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <title>Студенты</title>
-    <meta charset="UTF-8"/>
-</head>
-<body>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Birthdate</th>
-    </tr>
-    <% List<Person> list = (List<Person>) request.getAttribute("persons");
-        for (Person person : list) { %>
-    <tr>
-        <td><%=person.getId()%></td>
-        <td><%=person.getName()%></td>
-        <td><%=person.getBirthDate()%></td>
-    </tr>
-    <br>
-    <% } %>
-</table>
-<br>
-<a href="/menu.jsp">Menu page</a>
-</body>
-</html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="myTags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<myTags:template>
+    <jsp:attribute name="header">
+        <h1>List of students</h1>
+    </jsp:attribute>
+    <jsp:body>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birthdate</th>
+                <th>Email</th>
+                <th>Telephone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="person" items="${persons}">
+                <tr>
+                    <td scope="row">${person.id}</td>
+                    <td>${person.name}</td>
+                    <td>${person.birthDate}</td>
+                    <td>${person.email}</td>
+                    <td>${person.telephone}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <br>
+        <a href="/menu.jsp">Menu page</a>
+    </jsp:body>
+</myTags:template>
