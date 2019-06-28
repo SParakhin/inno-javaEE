@@ -9,4 +9,4 @@ CREATE TABLE PERSON
   telephone   varchar(250)
 );
 
-insert into PERSON (name, birth_date, login, password) VALUES ('admin','01012000','admin','123');
+insert into PERSON (name, birth_date, login, password,email,telephone) VALUES ('admin','01012000','admin','123','ormts@mail.ru','9038824968');

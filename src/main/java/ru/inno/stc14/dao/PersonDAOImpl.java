@@ -30,13 +30,13 @@ public class PersonDAOImpl implements PersonDAO {
         try (PreparedStatement statement = connection.prepareStatement(SELECT_PERSON_SQL_TEMPLATE)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    Person person = new Person();
+                    Person person = new Person.Builder()
+                            .withName(resultSet.getString(2))
+                            .withBirthDate(new Date(resultSet.getLong(3)))
+                            .withEmail(resultSet.getString(4))
+                            .withPhone(resultSet.getString(5))
+                            .build();
                     person.setId(resultSet.getInt(1));
-                    person.setName(resultSet.getString(2));
-                    Date date = new Date(resultSet.getLong(3));
-                    person.setBirthDate(date);
-                    person.setEmail(resultSet.getString(4));
-                    person.setTelephone(resultSet.getString(5));
                     result.add(person);
                 }
             }
@@ -57,8 +57,8 @@ public class PersonDAOImpl implements PersonDAO {
             }
             statement.setString(3, person.getLogin());
             statement.setString(4, person.getPassword());
-            statement.setString(5,person.getEmail());
-            statement.setString(6,person.getTelephone());
+            statement.setString(5, person.getEmail());
+            statement.setString(6, person.getTelephone());
             statement.execute();
             return true;
         } catch (SQLException e) {
@@ -75,9 +75,10 @@ public class PersonDAOImpl implements PersonDAO {
             statement.setString(2, password);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    person = new Person();
-                    person.setLogin(resultSet.getString(1));
-                    person.setPassword(resultSet.getString(2));
+                    person = new Person.Builder()
+                            .withLogin(resultSet.getString(1))
+                            .withPassword(resultSet.getString(2))
+                            .build();
                 }
             }
         } catch (SQLException e) {
