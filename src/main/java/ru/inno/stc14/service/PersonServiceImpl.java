@@ -2,6 +2,7 @@ package ru.inno.stc14.service;
 
 import ru.inno.stc14.dao.PersonDAO;
 import ru.inno.stc14.dao.PersonDAOImpl;
+import ru.inno.stc14.dao.PersonDAOProxy;
 import ru.inno.stc14.entity.Person;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
     private final PersonDAO personDAO;
 
     public PersonServiceImpl(Connection con) {
-        personDAO = new PersonDAOImpl(con);
+        personDAO = new PersonDAOProxy(con);
     }
 
     @Override

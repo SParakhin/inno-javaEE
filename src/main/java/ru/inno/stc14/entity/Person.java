@@ -79,6 +79,10 @@ public class Person {
                 '}';
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public static class Builder {
         private String name;
         private Date birthDate;
